@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
+
+# if installed via homebrew, then use just `sourcery` instead of following path to bin
+"$DIR/lib/sourcery/bin/sourcery" \
+    --sources di-workshopTests/sourcery \
+    --sources di-workshop/ \
+    --sources di-workshopTests/ \
+    --templates di-workshopTests/sourcery/AutoMockable.stencil \
+    --output di-workshopTests/sourcery/
+
+# --sources ... paths to source swift files that should be parsed
+# --templates ... path to templates telling how to generate mocks
+# --output ... path where mocks will be generated
