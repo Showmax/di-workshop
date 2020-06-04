@@ -8,9 +8,14 @@
 
 import UIKit
 
-class WatchingProgressStore {
+protocol WatchingProgressStore {
+    func loadWatchingProgressForMovieID(_ movieID: String) -> Double
+    func setWatchingProgress(_ watchingProgress: Double, for movieID: String)
+}
 
-    static let shared = WatchingProgressStore()
+class WatchingProgressStoreImpl: WatchingProgressStore {
+
+    static let shared = WatchingProgressStoreImpl()
 
     var storage: [String: Double] = [:]
 

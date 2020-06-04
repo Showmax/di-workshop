@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         )
         let deps = MoviesListModel.Dependencies(
-            movies: MoviesStore.shared,
-            watchingProgress: WatchingProgressStore.shared
+            movies: MoviesStoreImpl.shared,
+            watchingProgress: WatchingProgressStoreImpl.shared
         )
         let model = MoviesListModel(deps: deps, flow: flow)
         return MoviesListViewController(model: model)
@@ -39,8 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func makePlayerForMovie(_ movieID: String) -> UIViewController {
         let deps = PlayerModel.Dependencies(
-            movies: MoviesStore.shared,
-            watchingProgress: WatchingProgressStore.shared
+            movies: MoviesStoreImpl.shared,
+            watchingProgress: WatchingProgressStoreImpl.shared
         )
         let model = PlayerModel(deps: deps, movieID: movieID)
         return PlayerViewController(model: model)

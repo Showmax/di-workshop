@@ -8,9 +8,14 @@
 
 import UIKit
 
-class MoviesStore {
+protocol MoviesStore {
+    func loadMovies() -> [Movie]
+    func movieByID(_ id: String) -> Movie?
+}
 
-    static let shared = MoviesStore()
+class MoviesStoreImpl: MoviesStore {
+
+    static let shared = MoviesStoreImpl()
 
     private lazy var movies: [Movie] = {
         let url = URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!
