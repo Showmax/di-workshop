@@ -33,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             movies: MoviesStoreImpl.shared,
             watchingProgress: WatchingProgressStoreImpl.shared
         )
+        /// PROBLEM 4
+        /// - imagine you have
+        ///    - more of those dependencies
+        ///    - and more layers
+        /// - it will lead you to forwarding those dependencies from one layer to next layer
+        /// - it will make hard to read code
+        /// - with lots of boilerplate code just to pass around dependencies
         let model = MoviesListModel(deps: deps, flow: flow)
         return MoviesListViewController(model: model)
     }
@@ -42,6 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             movies: MoviesStoreImpl.shared,
             watchingProgress: WatchingProgressStoreImpl.shared
         )
+        /// PROBLEM 4
+        /// - imagine you have
+        ///    - more of those dependencies
+        ///    - and more layers
+        /// - it will lead you to forwarding those dependencies from one layer to next layer
+        /// - it will make hard to read code
+        /// - with lots of boilerplate code just to pass around dependencies
         let model = PlayerModel(deps: deps, movieID: movieID)
         return PlayerViewController(model: model)
     }
