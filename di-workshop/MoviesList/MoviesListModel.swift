@@ -19,11 +19,17 @@ struct MovieListItem {
 }
 
 struct MoviesListModel {
+    struct Dependencies {
+        let movies: MoviesStore
+        let watchingProgress: WatchingProgressStore
+    }
+
+    let deps: Dependencies
     let flow: MoviesListFlow
 
     func loadMovies() -> [MovieListItem] {
-        return MoviesStore.shared.loadMovies().map { movie in
-            let progress = WatchingProgressStore.shared.loadWatchingProgressForMovieID(movie.id)
+        return deps.movies.loadMovies().map { movie in
+            let progress = deps.watchingProgress.loadWatchingProgressForMovieID(movie.id)
             return MovieListItem(id: movie.id, title: movie.title, watchingProgress: String(format: "%.0f%%", progress*100))
         }
     }

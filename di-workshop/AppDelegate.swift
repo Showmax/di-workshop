@@ -29,12 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self?.navigationController?.pushViewController(player, animated: true)
             }
         )
-        let model = MoviesListModel(flow: flow)
+        let deps = MoviesListModel.Dependencies(
+            movies: MoviesStore.shared,
+            watchingProgress: WatchingProgressStore.shared
+        )
+        let model = MoviesListModel(deps: deps, flow: flow)
         return MoviesListViewController(model: model)
     }
 
     func makePlayerForMovie(_ movieID: String) -> UIViewController {
-        let model = PlayerModel(movieID: movieID)
+        let deps = PlayerModel.Dependencies(
+            movies: MoviesStore.shared,
+            watchingProgress: WatchingProgressStore.shared
+        )
+        let model = PlayerModel(deps: deps, movieID: movieID)
         return PlayerViewController(model: model)
     }
 }

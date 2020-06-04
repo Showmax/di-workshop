@@ -17,21 +17,28 @@ enum PlayerState {
 }
 
 class PlayerModel {
+    struct Dependencies {
+        let movies: MoviesStore
+        let watchingProgress: WatchingProgressStore
+    }
+
+    let deps: Dependencies
     let movieID: String
 
     private(set) var state: PlayerState = .loading
 
-    init(movieID: String) {
+    init(deps: Dependencies, movieID: String) {
+        self.deps = deps
         self.movieID = movieID
     }
 
     func loadState() {
-        guard let movie = MoviesStore.shared.movieByID(movieID) else { return }
-        let progress = WatchingProgressStore.shared.loadWatchingProgressForMovieID(movieID)
+        guard let movie = deps.movies.movieByID(movieID) else { return }
+        let progress = deps.watchingProgress.loadWatchingProgressForMovieID(movieID)
         state = .loaded(movie.title, movie.url, progress)
     }
 
     func rememberWatchingProgress(_ progress: Double) {
-        WatchingProgressStore.shared.setWatchingProgress(progress, for: movieID)
+        deps.watchingProgress.setWatchingProgress(progress, for: movieID)
     }
 }
