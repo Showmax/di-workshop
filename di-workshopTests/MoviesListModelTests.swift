@@ -10,11 +10,12 @@ class MoviesListModelTests: XCTestCase {
         let expectedWatchingProgressStored = 0.3
         let movies = MoviesStoreMock()
         movies.loadMoviesReturnValue = [Movie(id: "a", title: expectedMovieTitle, url: URL(string: "http://www.showmax.com")!)]
+        DI.mock(MoviesStore.self, instantiator: { movies })
         let watchingProgress = WatchingProgressStoreMock()
         watchingProgress.loadWatchingProgressForMovieIDReturnValue = expectedWatchingProgressStored
-        let deps = MoviesListModel.Dependencies(movies: movies, watchingProgress: watchingProgress)
+        DI.mock(WatchingProgressStore.self, instantiator: { watchingProgress })
         let flow = MoviesListFlow(playMovie: { _ in })
-        let model = MoviesListModel(deps: deps, flow: flow)
+        let model = MoviesListModel(flow: flow)
 
         // Act:
         let firstMovie = model.loadMovies().first

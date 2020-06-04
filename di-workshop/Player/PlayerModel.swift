@@ -18,17 +18,16 @@ enum PlayerState {
 
 class PlayerModel {
     struct Dependencies {
-        let movies: MoviesStore
-        let watchingProgress: WatchingProgressStore
+        let movies: MoviesStore = DI.getMoviesStore()
+        let watchingProgress: WatchingProgressStore = DI.getWatchingProgressStore()
     }
 
-    let deps: Dependencies
+    let deps = Dependencies()
     let movieID: String
 
     private(set) var state: PlayerState = .loading
 
-    init(deps: Dependencies, movieID: String) {
-        self.deps = deps
+    init(movieID: String) {
         self.movieID = movieID
     }
 

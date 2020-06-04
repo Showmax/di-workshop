@@ -11,7 +11,8 @@
 		C410094D2472719400A39E11 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C410094C2472719400A39E11 /* PlayerModel.swift */; };
 		C447250E24782F8C00FC7F41 /* MoviesListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447250D24782F8C00FC7F41 /* MoviesListModelTests.swift */; };
 		C44725252478424200FC7F41 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44725222478423700FC7F41 /* AutoMockable.generated.swift */; };
-		C44F62332469539100D42B29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44F62322469539100D42B29 /* AppDelegate.swift */; };
+		C44725272478434E00FC7F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44725262478434E00FC7F41 /* AppDelegate.swift */; };
+		C44F62332469539100D42B29 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44F62322469539100D42B29 /* DI.swift */; };
 		C44F62372469539100D42B29 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44F62362469539100D42B29 /* MoviesListViewController.swift */; };
 		C44F623C2469539200D42B29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C44F623B2469539200D42B29 /* Assets.xcassets */; };
 		C44F623F2469539200D42B29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C44F623D2469539200D42B29 /* LaunchScreen.storyboard */; };
@@ -40,8 +41,9 @@
 		C44725222478423700FC7F41 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		C44725232478423700FC7F41 /* AutoMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
 		C44725242478423700FC7F41 /* AutoMockable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoMockable.stencil; sourceTree = "<group>"; };
+		C44725262478434E00FC7F41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C44F622F2469539100D42B29 /* di-workshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "di-workshop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C44F62322469539100D42B29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C44F62322469539100D42B29 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		C44F62362469539100D42B29 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 		C44F623B2469539200D42B29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C44F623E2469539200D42B29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -133,7 +135,8 @@
 		C44F62312469539100D42B29 /* di-workshop */ = {
 			isa = PBXGroup;
 			children = (
-				C44F62322469539100D42B29 /* AppDelegate.swift */,
+				C44F62322469539100D42B29 /* DI.swift */,
+				C44725262478434E00FC7F41 /* AppDelegate.swift */,
 				C41009492472717000A39E11 /* Stores */,
 				C41009472472715700A39E11 /* MoviesList */,
 				C41009482472716000A39E11 /* Player */,
@@ -257,8 +260,9 @@
 			files = (
 				C44F62372469539100D42B29 /* MoviesListViewController.swift in Sources */,
 				C410094B2472717F00A39E11 /* MoviesListModel.swift in Sources */,
+				C44725272478434E00FC7F41 /* AppDelegate.swift in Sources */,
 				C44F6255246953AF00D42B29 /* PlayerViewController.swift in Sources */,
-				C44F62332469539100D42B29 /* AppDelegate.swift in Sources */,
+				C44F62332469539100D42B29 /* DI.swift in Sources */,
 				C4A1228524728E5B0079F6D8 /* Movie.swift in Sources */,
 				C44F62572469591200D42B29 /* MoviesStore.swift in Sources */,
 				C44F625B24698EBF00D42B29 /* WatchingProgressStore.swift in Sources */,

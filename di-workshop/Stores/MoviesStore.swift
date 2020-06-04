@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension DI {
+    static let getMoviesStore = bind(MoviesStore.self) { MoviesStoreImpl.shared /* or MoviesStoreImpl() */ }
+}
+
 protocol MoviesStore {
     func loadMovies() -> [Movie]
     func movieByID(_ id: String) -> Movie?

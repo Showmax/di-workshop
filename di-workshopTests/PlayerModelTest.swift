@@ -11,10 +11,11 @@ class PlayerModelTest: XCTestCase {
         let expectedWatchingProgressStored = 0.3
         let movies = MoviesStoreMock()
         movies.movieByIDReturnValue = Movie(id: movieID, title: expectedMovieTitle, url: expectedMovieURL)
+        DI.mock(MoviesStore.self, instantiator: { movies })
         let watchingProgress = WatchingProgressStoreMock()
         watchingProgress.loadWatchingProgressForMovieIDReturnValue = expectedWatchingProgressStored
-        let deps = PlayerModel.Dependencies(movies: movies, watchingProgress: watchingProgress)
-        let model = PlayerModel(deps: deps, movieID: movieID)
+        DI.mock(WatchingProgressStore.self, instantiator: { watchingProgress })
+        let model = PlayerModel(movieID: movieID)
 
         // Act:
         model.loadState()

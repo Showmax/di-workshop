@@ -20,11 +20,11 @@ struct MovieListItem {
 
 struct MoviesListModel {
     struct Dependencies {
-        let movies: MoviesStore
-        let watchingProgress: WatchingProgressStore
+        let movies: MoviesStore = DI.getMoviesStore()
+        let watchingProgress: WatchingProgressStore = DI.getWatchingProgressStore()
     }
 
-    let deps: Dependencies
+    let deps = Dependencies()
     let flow: MoviesListFlow
 
     func loadMovies() -> [MovieListItem] {
