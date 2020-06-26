@@ -3,6 +3,11 @@ import XCTest
 
 class MoviesListModelTests: XCTestCase {
 
+    override func tearDown() {
+        super.tearDown()
+        DI.unmockAll()
+    }
+
     func test__loadMovies__produceDataForView() throws {
         // Arrange:
         let expectedMovieTitle = "Godfather of Harlem"
