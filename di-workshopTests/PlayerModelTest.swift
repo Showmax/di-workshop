@@ -2,6 +2,11 @@ import XCTest
 @testable import di_workshop
 
 class PlayerModelTest: XCTestCase {
+    
+    override func tearDown() {
+        super.tearDown()
+        DI.unmockAll()
+    }
 
     func test_loadState__expectToLoadMovieDetailsForPlayer() throws {
         // Arrange:
